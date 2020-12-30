@@ -6,6 +6,17 @@ function run {
 	done
 }
 
+if [ ! -d zipkin ]
+then
+	mkdir zipkin
+	cd zipkin
+	curl -sSL https://zipkin.io/quickstart.sh | bash -s
+fi
+cd zipkin
+java -Xmx6g -jar zipkin.jar &
+sleep 5
+cd ..
+
 #docker run -d -p 9411:9411 openzipkin/zipkin
 
 cd 2 
