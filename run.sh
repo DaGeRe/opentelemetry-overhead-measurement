@@ -23,10 +23,11 @@ cd 2
 run
 mv ~/.KoPeMe/de.peass.validation/simplevalidation/de.peass.MainTest/testMe.xml 2.xml
 
-cd 4
+cd ../4
 run
 mv ~/.KoPeMe/de.peass.validation/simplevalidation/de.peass.MainTest/testMe.xml 4.xml
 
-#cd 8
-#run
+cd ../8
+run
+mv ~/.KoPeMe/de.peass.validation/simplevalidation/de.peass.MainTest/testMe.xml 8.xml
 
