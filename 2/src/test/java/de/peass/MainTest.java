@@ -58,7 +58,7 @@ public class MainTest {
     }
    
    @PerformanceTest(warmupExecutions = 10, executionTimes = 10, repetitions = 1000000, useKieker = false, 
-          dataCollectors = "ONLYTIME", timeout=1000*60*60*10)
+          dataCollectors = "ONLYTIME_NOGC", timeout=1000*60*60*10)
    @Test
    public void testMe() {
       Span span = tracer.spanBuilder("testMe").startSpan();
