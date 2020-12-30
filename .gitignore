@@ -1,0 +1,4 @@
+*txt
+*/dependency-reduced-pom.xml
+opentelemetry-javaagent-all.jar
+*/target/
