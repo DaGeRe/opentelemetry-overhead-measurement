@@ -1,9 +1,9 @@
 package de.peass;
 
-class C2_0{ 
+class C63_0{ 
  public void method0(){
          final AddRandomNumbers rm = new AddRandomNumbers();
-         for (int i = 0; i < 300; i++) {
+         for (int i = 0; i < 301; i++) {
             rm.addSomething();
          } }
 }
