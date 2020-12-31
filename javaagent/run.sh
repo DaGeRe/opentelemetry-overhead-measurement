@@ -24,15 +24,10 @@ fi
 
 #docker run -d -p 9411:9411 openzipkin/zipkin
 
-cd 2 
-run
-mv ~/.KoPeMe/de.peass.validation/simplevalidation/de.peass.MainTest/testMe.xml 2.xml
-
-cd ../4
-run
-mv ~/.KoPeMe/de.peass.validation/simplevalidation/de.peass.MainTest/testMe.xml 4.xml
-
-cd ../8
-run
-mv ~/.KoPeMe/de.peass.validation/simplevalidation/de.peass.MainTest/testMe.xml 8.xml
-
+for treeDepth in 2 4 8 16 32 64 128
+do
+	cd $treeDepth
+	run
+	mv ~/.KoPeMe/de.peass.validation/simplevalidation/de.peass.MainTest/testMe.xml ../2.xml
+	cd ..
+done
