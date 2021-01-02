@@ -23,6 +23,6 @@ for treeDepth in 2 4 8 16 32 64 128
 do
 	cd $treeDepth
 	run
-	mv ~/.KoPeMe/de.peass.validation/simplevalidation/de.peass.MainTest/testMe.xml ../2.xml
+	mv ~/.KoPeMe/de.peass.validation/simplevalidation/de.peass.MainTest/testMe.xml ../$treeDepth.xml
 	cd ..
 done
