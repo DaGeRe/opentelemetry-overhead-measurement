@@ -57,7 +57,7 @@ public class MainTest {
           .build();
     }
    
-   @PerformanceTest(warmup = 10, iterations = 10, repetitions = 1000000, useKieker = false, 
+   @PerformanceTest(warmup = 10, iterations = 10, repetitions = 100000, useKieker = false, 
           dataCollectors = "ONLYTIME_NOGC", timeout=1000*60*60*10)
    @Test
    public void testMe() {
