@@ -11,7 +11,7 @@ import io.opentelemetry.extension.annotations.WithSpan;
 public class MainTest {
 
    
-   @PerformanceTest(warmup = 10, iterations = 10, repetitions = 100000, useKieker = false, 
+   @PerformanceTest(warmup = 5, iterations = 5, repetitions = 100000, useKieker = false, 
           dataCollectors = "ONLYTIME_NOGC", timeout=1000*60*60*10)
    @Test
    @WithSpan
