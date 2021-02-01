@@ -37,4 +37,4 @@ do
 done
 
 echo "DurationInsMS RelativeStandardDeviation"
-for file in 2 4 8 16 32 64 128; do cat $file.xml | grep "<result" -A 1 | grep value | tr -d "<value/>" | getSum | awk '{print $2/1000000" "$1/$2}'; done
+for file in 2 4 8 16 32 64 128; do echo -n "$file "; cat $file.xml | grep "<result" -A 1 | grep value | tr -d "<value/>" | getSum | awk '{print $2/1000000" "$1/$2}'; done
