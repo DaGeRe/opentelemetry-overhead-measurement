@@ -1,9 +1,8 @@
 package de.peass;
 
 class C31_0{ 
- public void method0(){
+ public int method0(){
          final AddRandomNumbers rm = new AddRandomNumbers();
-         for (int i = 0; i < 301; i++) {
-            rm.addSomething();
-         } }
+            return rm.addSomething(301);
+ }
 }

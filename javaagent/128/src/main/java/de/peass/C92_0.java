@@ -1,8 +1,9 @@
 package de.peass;
 
 class C92_0{ 
- public void method0(){
+ public int method0(){
   C93_0 object = new   C93_0();
-  object.method0();
- }
+  int value = 0;
+  value += object.method0();
+  return value; }
 }
