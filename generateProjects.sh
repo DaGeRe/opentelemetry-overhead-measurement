@@ -10,7 +10,8 @@ function createBasicProject {
 		-slowParameter 301 -fastParameter 300 -type ADD \
 		-out temp &> temp.txt
 	cp -R $instrumentation/raw $instrumentation/$treeDepth/
-	mv temp/src/main/ $instrumentation/$treeDepth/src/main/
+	mkdir -p $instrumentation/$treeDepth/src/main/java/de/peass/
+	mv temp/src/main/java/de/peass/* $instrumentation/$treeDepth/src/main/java/de/peass/
 	rm temp -rf
 }
 
@@ -19,11 +20,11 @@ function generateJavaagentFull {
 	cp -R javaagent javaagent_full
 
 	cd javaagent_full
-	for file in 2 4 8 16 32 64 128
+	for depth in 2 4 8 16 32 64 128
 	do 
-		for file in $(ls $file/src/main/java/*/*/*java)
+		for file in $(ls $depth/src/main/java/*/*/*java)
 		do 
-		        echo $file
+		        #echo $file
 		        sed -i "/public int/i @io.opentelemetry.extension.annotations.WithSpan" $file
 		done
 	done
@@ -35,13 +36,14 @@ function generateManualFull {
 	cp -R manual manual_full
 
 	cd manual_full
-	for file in 2 4 8 16 32 64 128
+	for depth in 2 4 8 16 32 64 128
 	do 
-		for file in $(ls $file/src/main/java/*/*/*java)
+		for file in $(ls $depth/src/main/java/*/*/*java)
 		do 
-		        echo $file
-		        sed -i "/public int/a \ \ Span span = tracer.spanBuilder("testMe").startSpan();" $file
-		        sed -i "/return/a \ \ span.end();" $file
+		        #echo $file
+		        sed -i "/package/a import io.opentelemetry.api.trace.Span;" $file
+		        sed -i "/public int/a \ \ Span span = TraceUtil.tracer.spanBuilder(\"testMe_$depth\").startSpan();" $file
+		        sed -i "/return value/i \ \ span.end();" $file
 		done
 	done
 }
