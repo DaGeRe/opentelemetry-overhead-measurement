@@ -2,6 +2,7 @@
 **/dependency-reduced-pom.xml
 opentelemetry-javaagent-all.jar
 **/target/
+javaagent_full/raw/
 zipkin
 .classpath                                                           
 .gitignore                                                           
