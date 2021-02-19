@@ -41,9 +41,16 @@ function generateManualFull {
 		for file in $(ls $depth/src/main/java/*/*/*java)
 		do 
 		        #echo $file
-		        sed -i "/package/a import io.opentelemetry.api.trace.Span;" $file
-		        sed -i "/public int/a \ \ Span span = TraceUtil.tracer.spanBuilder(\"testMe_$depth\").startSpan();" $file
-		        sed -i "/return value/i \ \ span.end();" $file
+		        if [[ $file != *"TraceUtil"* ]]
+		        then
+				noSuffixName=${file%.java}
+				pathName=${noSuffixName##*/java/}
+				name=$(echo $pathName | tr "/" ".")
+				sed -i "/package/a import io.opentelemetry.api.trace.Span;\nimport io.opentelemetry.api.trace.Tracer;" $file
+				sed -i "/class/a \ \ public static final Tracer tracer = TraceUtil.openTelemetry.getTracer(\""$name"\");" $file
+				sed -i "/public int/a \ \ Span span = tracer.spanBuilder(\"method0\").startSpan();" $file
+				sed -i "/return value/i \ \ span.end();" $file
+			fi
 		done
 	done
 }
